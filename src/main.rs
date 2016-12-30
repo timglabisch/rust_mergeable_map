@@ -10,7 +10,7 @@ fn main() {
     let mut map_merge = MergeMap::new();
 
     for rounds in 0..10 {
-        let mut some_map = HashMap::new();
+        let mut some_map = HashMap::with_capacity(1_000_000);
         for i in 0..1_000_000 {
             some_map.insert(i, i*2);
         }

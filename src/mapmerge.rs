@@ -4,7 +4,7 @@ use std::hash::Hash;
 
 pub struct MergeMap {
     size: usize,
-    data: HashMap<u32, [u32; 31]>
+    data: HashMap<u32, Vec<u32>>
 }
 
 impl MergeMap {
@@ -21,7 +21,7 @@ impl MergeMap {
         let s = self.size;
 
         for (k, v) in map.drain() {
-            let entry = self.data.entry(k).or_insert_with(|| [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+            let entry = self.data.entry(k).or_insert_with(|| vec![0; s]);
             entry[day] = v;
         }
 
